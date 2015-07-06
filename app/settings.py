@@ -4,7 +4,14 @@ class Config(object):
 
 
 class ProdConfig(Config):
+    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+
+
+    CACHE_TYPE = 'simple'
+
+class TestConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://study:study@localhost/db_study'
+    
 
     CACHE_TYPE = 'simple'
 

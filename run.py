@@ -6,7 +6,7 @@ from app.models import db
 
 # default to dev config because no one should use this in
 # production anyway
-env = os.environ.get('SETTINGS_STUDYING', 'prod')
+env = os.environ.get('SETTINGS_STUDYING', 'test')
 app = create_app('app.settings.%sConfig' % env.capitalize(), env=env)
 
 if __name__ == "__main__":
