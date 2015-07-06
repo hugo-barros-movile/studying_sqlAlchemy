@@ -32,4 +32,4 @@ test:
 
 run:
 	. env/bin/activate && \
-	$(PYTHON) run.py
+	python run.py
