@@ -7,7 +7,7 @@ class Config(object):
 class ProdConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
 
-
+    print(os.environ['DATABASE_URL'])
     CACHE_TYPE = 'simple'
 
 class TestConfig(Config):
