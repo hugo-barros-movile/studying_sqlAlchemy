@@ -12,6 +12,7 @@ help:
 	@echo "  test        run all your tests using py.test"
 	@echo "  run         run your server"
 
+
 bootstrap:
 	$(VENV) env && \
 	. env/bin/activate && \
@@ -22,17 +23,13 @@ deps:
 
 lint:
 	. env/bin/activate && \
-	$(FLAKE8) --exclude=env . && \
-	deactivate
+	$(FLAKE8) --exclude=env . 
 
 test:
 	make env && \
 	. env/bin/activate && \
-	$(PYTEST) tests && \
-	deactivate
+	$(PYTEST) tests
 
 run:
 	. env/bin/activate && \
-	$(PYTHON) run.py && \ 
-	deactivate
-
+	$(PYTHON) run.py
