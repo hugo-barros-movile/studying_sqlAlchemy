@@ -22,7 +22,7 @@ deps:
 	$(PIP) install -r requirements.txt
 
 lint:
-	$(FLAKE8) --exclude=env . 
+	$(FLAKE8) --exclude=venv . 
 
 test:
 	$(PYTEST) tests
