@@ -1,11 +1,10 @@
 from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.login import UserMixin, AnonymousUserMixin
 from sqlalchemy_utils import PasswordType
 
 db = SQLAlchemy()
 
 
-class User(db.Model, UserMixin):
+class User(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     username = db.Column(db.String(), unique=True)
     password = db.Column(PasswordType(
@@ -24,20 +23,9 @@ class User(db.Model, UserMixin):
     def check_password(self, value):
         return self.password == value
 
-    def is_authenticated(self):
-        if isinstance(self, AnonymousUserMixin):
-            return False
-        else:
-            return True
 
     def is_active(self):
         return True
-
-    def is_anonymous(self):
-        if isinstance(self, AnonymousUserMixin):
-            return True
-        else:
-            return False
 
     def get_id(self):
         return self.id
