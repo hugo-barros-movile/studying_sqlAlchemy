@@ -15,3 +15,13 @@ curl -X POST "http://localhost:5000/login/?user=hugo&pass=senha"
 
 CURL command that checks if user exists:
 curl -X GET "http://localhost:5000/?user=hugo"
+
+
+
+This creates a file database.db
+It is using sqlite.
+
+In order to use postgres, export:
+export SETTINGS_STUDYING=prod
+
+This will use your DATABASE_URL env var.
