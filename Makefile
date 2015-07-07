@@ -19,7 +19,7 @@ bootstrap:
 	make deps
 
 deps:
-	$(PIP) install -r requirements.txt
+	$(PIP) install --allow-all-external -r requirements.txt --allow-unverified Twisted-Core 
 
 lint:
 	. env/bin/activate && \
