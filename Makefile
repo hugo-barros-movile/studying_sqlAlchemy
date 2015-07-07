@@ -14,22 +14,18 @@ help:
 
 
 bootstrap:
-	$(VENV) env && \
-	. env/bin/activate && \
-	make deps
+	$(VENV) venv && \
+	source venv/bin/activate
+	$(MAKE) deps
 
 deps:
-	$(PIP) install --allow-all-external -r requirements.txt --allow-unverified Twisted-Core 
+	$(PIP) install -r requirements.txt
 
 lint:
-	. env/bin/activate && \
 	$(FLAKE8) --exclude=env . 
 
 test:
-	make env && \
-	. env/bin/activate && \
 	$(PYTEST) tests
 
 run:
-	. env/bin/activate && \
-	python run.py
+	$(PYTHON) run.py
