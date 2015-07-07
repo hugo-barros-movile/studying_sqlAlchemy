@@ -20,7 +20,7 @@ def root():
             user = User(args['user'], args['pass'])
             if not user.insert_user():
                 return jsonify({'status':'NOK', 'message':'User already exists'}), 400
-            res = {'status':'OK', 'user':args['user'], 'password': args['pass']}
+            res = {'status':'OK', 'user':args['user'], 'message': 'User created'}
 
             return jsonify(res), 201
 
@@ -43,20 +43,21 @@ def root():
             return jsonify({'status':'NOK'}), 400
 
 
-@main.route("/login", methods=["GET", "POST"])
+@main.route("/login/", methods=["GET", "POST"])
 def login():
-    try:
-        args = parser.parse_args()
-        user = User.query.filter_by(username=args['user']).one()
+    if request.method == 'POST':
+        try:
+            args = parser.parse_args()
+            user = User.query.filter_by(username=args['user']).one()
 
-        if not user:
-            return jsonify({'status':'NOK', 'message':'Invalid user'}), 400
+            if not user:
+                return jsonify({'status':'NOK', 'message':'Invalid user'}), 400
 
-        if not (user.check_password(args['pass'])):
-            return jsonify({'status':'NOK', 'message':'Wrong password'}), 400
+            if not (user.check_password(args['pass'])):
+                return jsonify({'status':'NOK', 'message':'Wrong password'}), 400
 
+            return jsonify({'status':'OK', 'message':'Logged in'}), 200
+        except Exception as e:
+            print(e)
+            return jsonify({'status':'NOK', 'message':str(e)}), 400
 
-        return jsonify({'status':'OK', 'message':'Logged in'}), 200
-    except Exception as e:
-        print(e)
-        return jsonify({'status':'OK', 'message':str(e)}), 400
