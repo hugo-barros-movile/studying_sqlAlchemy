@@ -28,4 +28,5 @@ test:
 	$(PYTEST) tests
 
 run:
+	$(MAKE) bootstrap
 	$(PYTHON) run.py
