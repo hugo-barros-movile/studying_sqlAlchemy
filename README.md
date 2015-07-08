@@ -2,26 +2,24 @@
 
 This can be tested running:
 
-make bootstrap ; source venv/bin/activate ; make deps ; make run
+```
+$ make test
+```
+If you want to run your own server, just run:
 
+```
+$ make run
+```
+Some examples for you try:
 
-
-CURL command that creates user:
-curl -X POST "http://localhost:5000/?user=hugo&pass=senha"
-
-CURL command that login:
-curl -X POST "http://localhost:5000/login/?user=hugo&pass=senha"
+```
+$ curl -X POST "http://localhost:5000/?user=hugo&pass=senha"
+```
+```
+$ curl -X POST "http://localhost:5000/login/?user=hugo&pass=senha"
+```
 (doesnt do anything really, just checks the password)
 
-CURL command that checks if user exists:
-curl -X GET "http://localhost:5000/?user=hugo"
-
-
-
-This creates a file database.db
-It is using sqlite.
-
-In order to use postgres, export:
-export SETTINGS_STUDYING=prod
-
-This will use your DATABASE_URL env var.
+```
+$ curl -X GET "http://localhost:5000/?user=hugo"
+```
